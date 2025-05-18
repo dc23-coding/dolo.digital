@@ -1,6 +1,6 @@
 <template>
   <aside class="w-64 bg-gray-800 text-white min-h-screen p-4 flex flex-col">
-    <img src="../assets/logo.png" alt="Dolo Logo" class="h-12 mb-6" />
+    <img src="/assets/dolo.png" alt="Dolo Logo" class="h-12 mb-6" />
     <nav class="space-y-2 flex flex-col">
       <router-link to="/" class="block py-2 px-4 rounded hover:bg-gray-700">Home</router-link>
       <router-link to="/loads" class="block py-2 px-4 rounded hover:bg-gray-700">Trip Planner</router-link>
