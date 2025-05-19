@@ -1,20 +1,16 @@
 <template>
-  <div class="min-h-screen bg-gray-100 flex">
-    <Sidebar />
-    <div class="flex-1">
-      <Header />
-      <main class="p-4">
-        <router-view />
-      </main>
-    </div>
-  </div>
+  <Header />
+  <Sidebar />
+  <main class="pt-16 pl-56"> <!-- Adjust padding to match sidebar width -->
+    <router-view />
+  </main>
 </template>
 
 <script>
-import Sidebar from './components/Sidebar.vue';
-import Header from './components/Header.vue';
+import Header from './components/Header.vue'
+import Sidebar from './components/Sidebar.vue'
 
 export default {
-  components: { Sidebar, Header },
-};
+  components: { Header, Sidebar }
+}
 </script>

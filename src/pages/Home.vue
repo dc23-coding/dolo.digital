@@ -1,15 +1,17 @@
 <template>
-  <div class="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
-    <h1 class="text-3xl font-bold text-gray-800 mb-8">Welcome to Dolo.Digital</h1>
-
-    <!-- Primary CTA Button with Animation -->
+  <div class="flex flex-col items-center justify-center min-h-screen bg-background p-4">
+    <!-- Hero Section -->
+    <h1 class="text-4xl font-bold text-gray-800 mb-4">
+      {{ currentFeature }}
+    </h1>
     <button
-      class="bg-blue-500 hover:bg-blue-600 text-white text-2xl font-semibold px-10 py-5 rounded-lg shadow-lg transition duration-200 ease-in-out transform hover:scale-105 active:scale-95"
       @click="goToCalculator"
+      class="bg-primary-light text-white text-2xl font-semibold px-10 py-5 rounded-lg shadow-lg transition transform duration-300 ease-in-out hover:scale-105 active:scale-95 animate-pulse"
     >
       Start a Calculation
     </button>
 
+    <!-- Affiliate Offers Carousel (unchanged) -->
     <div class="mt-8 w-full max-w-md">
       <h2 class="text-xl font-semibold text-gray-700 mb-4">Featured Offers</h2>
       <div class="carousel-container">
@@ -40,6 +42,12 @@ export default {
   name: 'HomePage',
   data() {
     return {
+      features: [
+        'Plan Smarter Trips',
+        'Find Fuel Discounts Fast',
+        'Get Real-Time Route Insights',
+      ],
+      currentFeatureIndex: 0,
       affiliateOffers: [
         { id: 1, title: 'Fuel Discount at Pilot', image: '/assets/pilot.jpg', link: '/offers/pilot' },
         { id: 2, title: '10% Off at Subway', image: '/assets/subway.jpg', link: '/offers/subway' },
@@ -48,7 +56,17 @@ export default {
       currentOfferIndex: 0,
     };
   },
+  computed: {
+    currentFeature() {
+      return this.features[this.currentFeatureIndex];
+    },
+  },
   mounted() {
+    // Rotate hero features every 4 seconds
+    setInterval(() => {
+      this.currentFeatureIndex = (this.currentFeatureIndex + 1) % this.features.length;
+    }, 4000);
+    // Existing carousel rotation
     setInterval(() => {
       this.currentOfferIndex = (this.currentOfferIndex + 1) % this.affiliateOffers.length;
     }, 5000);
@@ -65,6 +83,10 @@ export default {
 </script>
 
 <style scoped>
+:root {
+  --primary-light: #f97316;
+}
+
 .carousel-container {
   position: relative;
   overflow: hidden;

@@ -1,7 +1,7 @@
 <template>
   <div class="p-4 max-w-md mx-auto">
     <h2 class="text-2xl font-bold mb-4">Profile</h2>
-    <div class="bg-white p-4 rounded shadow mb-4">
+    <div class="bg-surface dark:bg-surface-dark p-4 rounded shadow mb-4">
       <p>Email: {{ user?.email }}</p>
       <p>Earnings: $12,345 (Last 30 days)</p>
     </div>

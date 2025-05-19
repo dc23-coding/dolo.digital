@@ -24,19 +24,24 @@
 
     <button
       @click="register"
-      class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg shadow w-full transition transform hover:scale-105 active:scale-95"
+      class="bg-primary text-white px-6 py-3 rounded w-full hover:opacity-90 transition"
     >
       Create Account
     </button>
 
     <p v-if="error" class="mt-4 text-red-500 text-center">{{ error }}</p>
+    <p class="mt-4 text-center">
+      Already have an account?
+      <router-link to="/login" class="text-primary underline">Login here</router-link>
+    </p>
   </div>
 </template>
 
 <script>
-import { supabase } from '../lib/supabase';
+import { supabase } from '@/lib/supabase';
 
 export default {
+  name: 'RegisterPage',
   data() {
     return {
       email: '',
@@ -53,25 +58,23 @@ export default {
         email: this.email,
         password: this.password,
       });
-
       if (error) {
         this.error = error.message;
         return;
       }
-
-      // Insert user profile data into dolo_users
-      const { error: profileError } = await supabase.from('dolo_users').insert([{
-        id: data.user.id,
-        email: this.email,
-        full_name: this.fullName,
-        phone_number: this.phoneNumber,
-      }]);
-
+      // insert profile
+      const { error: profileError } = await supabase
+        .from('dolo_users')
+        .insert([{
+          id: data.user.id,
+          email: this.email,
+          full_name: this.fullName,
+          phone_number: this.phoneNumber
+        }]);
       if (profileError) {
         this.error = profileError.message;
         return;
       }
-
       this.$router.push('/');
     },
   },

@@ -14,22 +14,24 @@
 
     <button
       @click="login"
-      class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg shadow w-full transition transform hover:scale-105 active:scale-95"
+      class="bg-primary text-white px-6 py-3 rounded w-full hover:opacity-90 transition"
     >
       Login
     </button>
 
     <p v-if="error" class="mt-4 text-red-500 text-center">{{ error }}</p>
     <p class="mt-4 text-center">
-      Don’t have an account? <router-link to="/register" class="text-blue-500 underline">Create one</router-link>
+      Don’t have an account?
+      <router-link to="/register" class="text-primary underline">Create one</router-link>
     </p>
   </div>
 </template>
 
 <script>
-import { supabase } from '../lib/supabase';
+import { supabase } from '@/lib/supabase';
 
 export default {
+  name: 'LoginPage',
   data() {
     return {
       email: '',
@@ -44,12 +46,8 @@ export default {
         email: this.email,
         password: this.password,
       });
-
-      if (error) {
-        this.error = error.message;
-      } else {
-        this.$router.push('/');
-      }
+      if (error) this.error = error.message;
+      else this.$router.push('/');
     },
   },
 };

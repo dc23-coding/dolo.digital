@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*────────────────────────────────────────────────────────────
+  Define light & dark theme CSS variables, plus base styles
+────────────────────────────────────────────────────────────*/
+@layer base {
+  /* ─── Light theme defaults ─────────────────────────────── */
+  :root {
+    --background:           #ffffff;
+    --foreground:           #1f2937;   /* slate-800 */
+    --color-primary-light:  #3b82f6;   /* blue-500 */
+    --color-primary-dark:   #2563eb;   /* blue-600 */
+    --color-surface-light:  #f9fafb;   /* slate-50 */
+    --color-surface-dark:   #e5e7eb;   /* slate-200 */
+    --color-border:         #e5e7eb;   /* slate-200 */
+  }
+
+  /* ─── Dark theme overrides ─────────────────────────────── */
+  .dark {
+    --background:           #1f2937;   /* slate-800 */
+    --foreground:           #f9fafb;   /* slate-50 */
+    --color-primary-light:  #60a5fa;   /* blue-400 */
+    --color-primary-dark:   #3b82f6;   /* blue-500 */
+    --color-surface-light:  #374151;   /* slate-700 */
+    --color-surface-dark:   #1f2937;   /* slate-800 */
+    --color-border:         #4b5563;   /* slate-600 */
+  }
+
+  /* ─── Apply variables to the root elements ───────────── */
+  html, body {
+    background-color: var(--background);
+    color:            var(--foreground);
+  }
+}
