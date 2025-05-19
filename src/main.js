@@ -2,7 +2,6 @@
 
 import { createApp } from 'vue';
 import { createRouter, createWebHistory } from 'vue-router';
-import 'leaflet/dist/leaflet.css';
 import App from './App.vue';
 import Home from './pages/Home.vue';
 import Loads from './pages/Loads.vue';
@@ -10,6 +9,8 @@ import Profile from './pages/Profile.vue';
 import RouteCalculator from './pages/RouteCalculator.vue';
 import '../styles.css'; // ✅ Corrected import path
 import OffersPage from './pages/OffersPage.vue';
+
+
 
 
 const router = createRouter({

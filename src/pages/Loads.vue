@@ -25,7 +25,7 @@
 
     <button
       @click="goToCalculator"
-      class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg shadow transition transform hover:scale-105 active:scale-95 w-full"
+      class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg shadow transition transform hover:scale-105 active:scale-95 w-full mt-4"
     >
       Continue to Calculator
     </button>
